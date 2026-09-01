@@ -44,7 +44,8 @@
             </div>
 
             <div class="notes-container" id="todosContainer">
-                <!-- To-Dos will be inserted here -->
+               
+
             </div>
 
             <button class="create-btn" id="createBtn">+ Create</button>
@@ -85,7 +86,7 @@
         let currentViewMode = 'grid';
         let editingTodoId = null;
 
-        // Event Listeners
+        
         document.getElementById('menuBtn').addEventListener('click', (e) => {
             const menu = document.getElementById('dropdownMenu');
             menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
@@ -99,7 +100,7 @@
         });
 
         document.getElementById('searchBtn').addEventListener('click', () => {
-            alert('🔍 Coming Soon');
+            alert('Coming Soon');
         });
 
         document.querySelectorAll('.dropdown-item').forEach(item => {

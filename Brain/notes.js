@@ -1,4 +1,4 @@
-// Notes rendering and management
+// @ITS-GAUTAMDEVOPS CREATED BY GAUTAM KUMAR
 class NotesManager {
     constructor() {
         this.currentView = 'all';

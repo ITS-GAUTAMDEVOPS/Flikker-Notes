@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="Styling/variables.css">
 </head>
 <body class="dashboard-page">
-    <!-- Main Container -->
+     
+
+    <!--@ITS-GAUTAMDEVOPS CREATED BY GAUTAM KUMAR-->
+
+
     <div class="container">
-        <!-- Header -->
+      
         <header class="header">
             <div class="header-left">
                 <h1 class="logo">Flikker Notes</h1>
@@ -23,13 +27,13 @@
                         <path d="m21 21-4.35-4.35"></path>
                     </svg>
                 </button>
-                <!--<button class="menu-btn" id="menuBtn"></button>-->
+                
             </div>
         </header>
 
-        <!-- Main Content -->
+        
         <div class="main-content">
-            <!-- View Selection with Menu -->
+            
             <div class="view-selector-wrapper">
                 <div class="view-selector" id="viewSelector">
                     <button class="view-btn active" data-view="all">All Notes</button>
@@ -38,7 +42,7 @@
                 </div>
                 <button class="menu-btn-bar" id="menuBtnBar">⋯</button>
                 
-                <!-- Dropdown Menu -->
+             
                 <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
                     <button class="dropdown-item" data-action="grid">Grid View</button>
                     <button class="dropdown-item" data-action="list">List View</button>
@@ -47,22 +51,22 @@
                 </div>
             </div>
 
-            <!-- Notes Grid/List -->
+       
             <div class="notes-container" id="notesContainer">
-                <!-- Notes will be inserted here -->
+              
             </div>
 
-            <!-- Create Button -->
+            
             <button class="create-btn" id="createBtn">+ Create</button>
         </div>
 
-        <!-- To-Dos / Notes Toggle -->
+        
         <div class="bottom-toggle">
             <button class="toggle-btn active" data-type="notes">Notes</button>
             <button class="toggle-btn" data-type="todos">To-Dos</button>
         </div>
 
-        <!-- GitHub Link -->
+        
         <footer class="footer">
             <a href="https://github.com/ITS-GAUTAMDEVOPS" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -73,17 +77,17 @@
         </footer>
     </div>
 
-    <!-- Modal for Template Selection -->
+    
     <div class="modal" id="templateModal" style="display: none;">
         <div class="modal-content">
             <h2>Choose Your Magical Sheet</h2>
             <div class="templates-grid" id="templatesGrid">
-                <!-- Template options will be inserted here -->
+               
             </div>
         </div>
     </div>
 
-    <!-- Hidden file input for images -->
+    
     <input type="file" id="imageInput" accept="image/*" style="display: none;">
 
     <script src="Brain/storage.js"></script>

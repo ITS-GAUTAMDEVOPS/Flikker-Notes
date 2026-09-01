@@ -1,21 +1,20 @@
 /* Additional Variable Styling */
 
 :root {
-    /* Spacing */
+   
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
     --spacing-xl: 32px;
 
-    /* Border Radius */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
     --radius-full: 9999px;
 
-    /* Font Sizes */
+    
     --fs-xs: 12px;
     --fs-sm: 14px;
     --fs-base: 16px;
@@ -23,12 +22,12 @@
     --fs-xl: 24px;
     --fs-2xl: 32px;
 
-    /* Transitions */
+    
     --transition-fast: 150ms ease-in-out;
     --transition-base: 300ms ease-in-out;
     --transition-slow: 500ms ease-in-out;
 
-    /* Z-index */
+   
     --z-dropdown: 1000;
     --z-sticky: 1020;
     --z-fixed: 1030;
@@ -38,7 +37,6 @@
     --z-tooltip: 1070;
 }
 
-/* Utility Classes */
 .text-center {
     text-align: center;
 }
@@ -75,7 +73,7 @@
     display: block !important;
 }
 
-/* Animations */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
