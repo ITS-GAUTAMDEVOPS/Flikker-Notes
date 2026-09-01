@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flikker Notes - To-Dos</title>
+    <link rel="stylesheet" href="Styling/common.css">
+    <link rel="stylesheet" href="Styling/todos.css">
+    <link rel="stylesheet" href="Styling/variables.css">
+</head>
+<body class="todos-page">
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <h1 class="logo">Flikker Notes</h1>
+            </div>
+            <div class="header-right">
+                <button class="search-btn" id="searchBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="menu-btn" id="menuBtn">⋯</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="view-selector-wrapper">
+                <div class="view-selector" id="viewSelector">
+                    <button class="view-btn active" data-view="all">All To-Dos</button>
+                    <button class="view-btn" data-view="pending">Pending</button>
+                    <button class="view-btn" data-view="completed">Completed</button>
+                </div>
+                <button class="menu-btn-bar" id="menuBtnBar">⋯</button>
+                
+                <div class="dropdown-menu" id="dropdownMenu" style="display: none;">
+                    <button class="dropdown-item" data-action="grid">Grid View</button>
+                    <button class="dropdown-item" data-action="list">List View</button>
+                    <button class="dropdown-item" data-action="sort-name">Sort By Name</button>
+                    <button class="dropdown-item" data-action="sort-created">Sort By Time Created</button>
+                    <button class="dropdown-item" data-action="sort-edited">Sort By Time Edited</button>
+                </div>
+            </div>
+
+            <div class="notes-container" id="todosContainer">
+                <!-- To-Dos will be inserted here -->
+            </div>
+
+            <button class="create-btn" id="createBtn">+ Create</button>
+        </div>
+
+        <div class="bottom-toggle">
+            <button class="toggle-btn" data-type="notes">Notes</button>
+            <button class="toggle-btn active" data-type="todos">To-Dos</button>
+        </div>
+
+        <footer class="footer">
+            <a href="https://github.com/ITS-GAUTAMDEVOPS" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                https://github.com/ITS-GAUTAMDEVOPS
+            </a>
+        </footer>
+    </div>
+
+    <div class="modal" id="todoModal" style="display: none;">
+        <div class="modal-content">
+            <div class="editor-header">
+                <h2>Create New To-Do</h2>
+                <button class="close-btn" id="closeTodoModal">&times;</button>
+            </div>
+            <form id="todoForm" style="padding: 20px;">
+                <input type="text" id="todoTitle" placeholder="To-Do title" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px;">
+                <textarea id="todoDesc" placeholder="To-Do description" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; height: 100px;"></textarea>
+                <button type="submit" class="save-btn" style="width: 100%;">Create To-Do</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="Brain/storage.js"></script>
+    <script>
+        let currentView = 'all';
+        let currentViewMode = 'grid';
+        let editingTodoId = null;
+
+        // Event Listeners
+        document.getElementById('menuBtn').addEventListener('click', (e) => {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+            e.stopPropagation();
+        });
+
+        document.getElementById('menuBtnBar').addEventListener('click', (e) => {
+            const menu = document.getElementById('dropdownMenu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+            e.stopPropagation();
+        });
+
+        document.getElementById('searchBtn').addEventListener('click', () => {
+            alert('🔍 Coming Soon');
+        });
+
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                const action = e.target.dataset.action;
+                handleDropdownAction(action);
+                document.getElementById('dropdownMenu').style.display = 'none';
+            });
+        });
+
+        function handleDropdownAction(action) {
+            switch(action) {
+                case 'grid':
+                    currentViewMode = 'grid';
+                    storage.setViewMode('grid');
+                    break;
+                case 'list':
+                    currentViewMode = 'list';
+                    storage.setViewMode('list');
+                    break;
+                case 'sort-name':
+                    storage.setSortMode('name');
+                    break;
+                case 'sort-created':
+                    storage.setSortMode('created');
+                    break;
+                case 'sort-edited':
+                    storage.setSortMode('edited');
+                    break;
+            }
+            renderTodos();
+        }
+
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentView = e.target.dataset.view;
+                renderTodos();
+            });
+        });
+
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+                if (e.target.dataset.type === 'notes') {
+                    window.location.href = 'dashboard.html';
+                } else if (e.target.dataset.type === 'todos') {
+                    window.location.href = 'todos.html';
+                }
+            });
+        });
+
+        document.getElementById('createBtn').addEventListener('click', () => {
+            document.getElementById('todoModal').style.display = 'flex';
+        });
+
+        document.getElementById('closeTodoModal').addEventListener('click', () => {
+            document.getElementById('todoModal').style.display = 'none';
+        });
+
+        document.getElementById('todoForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('todoTitle').value.trim();
+            const desc = document.getElementById('todoDesc').value.trim();
+
+            if (!title) return;
+
+            const newTodo = {
+                id: storage.generateId(),
+                title,
+                description: desc,
+                completed: false,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            storage.saveTodo(newTodo);
+            document.getElementById('todoForm').reset();
+            document.getElementById('todoModal').style.display = 'none';
+            renderTodos();
+        });
+
+        function renderTodos() {
+            const container = document.getElementById('todosContainer');
+            container.innerHTML = '';
+
+            let todos = storage.getAllTodos();
+
+            if (currentView === 'pending') {
+                todos = todos.filter(t => !t.completed);
+            } else if (currentView === 'completed') {
+                todos = todos.filter(t => t.completed);
+            }
+
+            // Sort todos based on sort mode
+            const sortMode = storage.getSortMode();
+            if (sortMode === 'name') {
+                todos.sort((a, b) => (a.title || 'Untitled').localeCompare(b.title || 'Untitled'));
+            } else if (sortMode === 'created') {
+                todos.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            } else {
+                todos.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+            }
+
+            if (todos.length === 0) {
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #999;">No to-dos yet. Create one to get started!</div>';
+                return;
+            }
+
+            todos.forEach(todo => {
+                const todoCard = document.createElement('div');
+                todoCard.className = `note-card ${todo.completed ? 'completed' : ''}`;
+                todoCard.innerHTML = `
+                    <div class="note-card-title">${(todo.title || 'Untitled').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+                    <div class="note-card-content">${(todo.description || '').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+                    <div class="note-card-date">${new Date(todo.updatedAt || todo.createdAt).toLocaleDateString()}</div>
+                    <input type="checkbox" ${todo.completed ? 'checked' : ''} style="margin-bottom: 10px; cursor: pointer; width: 20px; height: 20px;">
+                    <button class="card-delete-btn" data-id="${todo.id}">Delete</button>
+                `;
+
+                const checkbox = todoCard.querySelector('input[type="checkbox"]');
+                checkbox.addEventListener('change', () => {
+                    todo.completed = checkbox.checked;
+                    storage.saveTodo(todo);
+                    renderTodos();
+                });
+
+                const deleteBtn = todoCard.querySelector('.card-delete-btn');
+                deleteBtn.addEventListener('click', () => {
+                    storage.deleteTodo(todo.id);
+                    renderTodos();
+                });
+
+                container.appendChild(todoCard);
+            });
+        }
+
+        document.addEventListener('click', () => {
+            document.getElementById('dropdownMenu').style.display = 'none';
+        });
+
+        document.addEventListener('DOMContentLoaded', renderTodos);
+    </script>
+</body>
+</html>

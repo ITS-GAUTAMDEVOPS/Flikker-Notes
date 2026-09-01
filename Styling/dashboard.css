@@ -1,0 +1,224 @@
+/* Dashboard Page Styles */
+
+.dashboard-page {
+    background-image: url('../Assets/BACKGROUND.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px 18px;
+    margin: 0 auto 70px;
+    min-height: 240px;
+    align-items: start;
+    padding-top: 8px;
+    max-width: 900px;
+    justify-items: center;
+}
+
+.notes-container.list-view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 980px;
+    width: 100%;
+    padding-top: 18px;
+}
+
+.notes-container.list-view .note-card {
+    width: 100%;
+    max-width: none;
+    min-height: 124px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) auto auto;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    border: none;
+}
+
+.notes-container.list-view .note-card-title {
+    margin: 0;
+    padding-top: 0;
+    font-size: 12px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+.notes-container.list-view .note-card-content {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.45;
+    opacity: 0.9;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.notes-container.list-view .note-card-date {
+    justify-self: end;
+    font-size: 0.92rem;
+    white-space: nowrap;
+}
+
+.notes-container.list-view .card-delete-btn {
+    position: static;
+    justify-self: end;
+    margin: 0;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+}
+
+/* Note Card */
+.note-card {
+    background-color: #000;
+    border-radius: 18px;
+    padding: 18px 16px 14px;
+    cursor: pointer;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 3px 8px rgba(0, 0, 0, 0.08);
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 380px;
+    width: 100%;
+    position: relative;
+    border: none;
+    overflow: hidden;
+}
+
+.note-card[style*="backgroundImage"] {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    background-blend-mode: multiply;
+}
+
+.note-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 18px 28px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.1);
+    filter: saturate(1.05);
+}
+
+.note-card.black-bg {
+    background-color: #000;
+    color: white;
+}
+
+.card-delete-btn {
+    align-self: flex-end;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+}
+
+.note-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    word-wrap: break-word;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.9);
+    padding-top: 12px;
+    text-transform: none;
+}
+
+.note-card-content {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.95);
+    flex: 1;
+    word-wrap: break-word;
+    line-height: 1.35;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.note-card.black-bg .note-card-content {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.note-card-date {
+    font-size: 16px;
+    color: #000;
+    margin-top: 0;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+}
+
+.note-card.black-bg .note-card-date {
+    color: #000;
+}
+
+.note-card.completed {
+    opacity: 0.72;
+}
+
+.note-card.completed .note-card-title,
+.note-card.completed .note-card-content {
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+/* Create Button */
+.create-btn {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 90px;
+    width: 330px;
+    height: 70px;
+    border-radius: 18px;
+    background-color: rgba(128, 128, 128, 0.68);
+    color: #fff;
+    border: none;
+    font-size: 26px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    padding: 0 18px;
+}
+
+.create-btn:hover {
+    background-color: rgba(115, 115, 115, 0.75);
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.save-btn {
+    border: none;
+    border-radius: 12px;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-weight: 700;
+    padding: 12px 24px;
+    cursor: pointer;
+    background: rgba(48, 48, 48, 0.82);
+    color: #fff;
+}
+
+.save-btn:hover {
+    opacity: 0.9;
+}

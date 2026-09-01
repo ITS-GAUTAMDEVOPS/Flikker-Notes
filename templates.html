@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flikker Notes - Choose Template</title>
+    <link rel="stylesheet" href="Styling/common.css">
+    <link rel="stylesheet" href="Styling/templates.css">
+    <link rel="stylesheet" href="Styling/variables.css">
+</head>
+<body class="templates-page">
+    <div class="templates-scene">
+        <div class="templates-topbar">
+            <div class="templates-brand">Flikker Notes</div>
+            <a class="templates-link" href="https://github.com/ITS-GAUTAMDEVOPS" target="_blank" rel="noreferrer">
+                https://github.com/ITS-GAUTAMDEVOPS
+            </a>
+            <div class="templates-decor" aria-hidden="true"></div>
+        </div>
+
+        <h1 class="templates-title">Choose Your Magical Sheet</h1>
+
+        <div class="templates-grid" id="templatesGrid">
+            <!-- Template options will be inserted here -->
+        </div>
+    </div>
+
+    <script src="Brain/storage.js"></script>
+    <script>
+        // Load templates
+        function loadTemplates() {
+            const templatesGrid = document.getElementById('templatesGrid');
+            const sheets = [
+                'Sheet-0.png',
+                'Sheet-1.png',
+                'Sheet-2.png',
+                'Sheet-3.png',
+                'Sheet-4.png',
+                'Sheet-5.png',
+                'Sheet-6.png',
+                'Sheet-7.png',
+                'Sheet-8.png',
+                'Sheet-9.png',
+                'Sheet-10.png',
+                'Sheet-11.png',
+                'Sheet-bg.png'
+            ];
+
+            sheets.forEach((sheetName, index) => {
+                const templateItem = document.createElement('button');
+                templateItem.type = 'button';
+                templateItem.className = 'template-item';
+                templateItem.innerHTML = `<img src="Assets/Magical Sheets/${sheetName}" alt="Template ${index + 1}">`;
+
+                templateItem.addEventListener('click', () => {
+                    const newNote = {
+                        id: storage.generateId(),
+                        title: 'NOTES',
+                        content: '',
+                        fontFamily: 'Arial',
+                        fontSize: '30',
+                        textAlign: 'left',
+                        textColor: '#000000',
+                        sheetImage: `Assets/Magical Sheets/${sheetName}`,
+                        notebook: 'default',
+                        images: [],
+                        isNew: true
+                    };
+
+                    sessionStorage.setItem('flikker_temp_note', JSON.stringify(newNote));
+                    window.location.href = `editor.html?id=${newNote.id}`;
+                });
+
+                templatesGrid.appendChild(templateItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTemplates);
+    </script>
+</body>
+</html>

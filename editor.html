@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flikker Notes - Editor</title>
+    <link rel="stylesheet" href="Styling/common.css">
+    <link rel="stylesheet" href="Styling/editor.css">
+    <link rel="stylesheet" href="Styling/variables.css">
+</head>
+<body class="editor-page">
+    <div class="editor-shell" id="editorModal">
+        <div class="editor-toolbar">
+            <div class="toolbar-row">
+                <label>Font_Name</label>
+                <select class="font-select" id="fontSelect">
+                    <option value="Arial">Arial</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                </select>
+            </div>
+
+            <div class="toolbar-row">
+                <label>Text_Size</label>
+                <select class="size-select" id="sizeSelect">
+                    <option value="10">10px</option>
+                    <option value="30">30px</option>
+                    <option value="50">50px</option>
+                    <option value="60">60px</option>
+                    <option value="75">75px</option>
+                    <option value="100">100px</option>
+                </select>
+            </div>
+
+            <div class="toolbar-row">
+                <label>Alignment</label>
+                <select class="align-select" id="alignSelect">
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="justify">Justify</option>
+                </select>
+            </div>
+
+            <div class="toolbar-row">
+                <label>Text_Color</label>
+                <input type="color" class="color-input" id="colorInput" value="#000000">
+            </div>
+        </div>
+
+        <div class="editor-sheet" id="editorSheet">
+            <input type="text" class="editor-title" id="editorTitle" placeholder="NOTES" value="NOTES">
+            <div class="editor-sheet-content" id="editorContent" contenteditable="true" spellcheck="false" aria-label="Note content"></div>
+        </div>
+
+        <div class="editor-actions">
+            <div class="editor-action-group">
+                <button class="save-btn" id="saveNoteBtn">Save..</button>
+                <button class="delete-btn" id="deleteNoteBtn" type="button">Delete</button>
+            </div>
+            <div class="zoom-controls">
+                <button class="size-btn" data-size="100" aria-label="Increase font size">+</button>
+                <button class="size-btn" data-size="10" aria-label="Decrease font size">-</button>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+
+    <script src="Brain/storage.js"></script>
+    <script src="Brain/editor.js"></script>
+</body>
+</html>

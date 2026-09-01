@@ -1,0 +1,429 @@
+/* Common Styles - Used by all pages */
+
+/* Landing Page */
+.landing-page {
+    background-image: url('../Assets/BACKGROUND.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.landing-header {
+    text-align: center;
+}
+
+.landing-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: -1px;
+}
+
+.landing-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.landing-btn {
+    padding: 15px 50px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 150px;
+}
+
+.notes-btn {
+    background-color: rgba(100, 100, 100, 0.7);
+    color: white;
+}
+
+.notes-btn:hover {
+    background-color: rgba(80, 80, 80, 0.9);
+    transform: translateY(-2px);
+}
+
+.todos-btn {
+    background-color: rgba(60, 60, 60, 0.9);
+    color: white;
+}
+
+.todos-btn:hover {
+    background-color: rgba(40, 40, 40, 1);
+    transform: translateY(-2px);
+}
+
+:root {
+    --primary-color: #a8d8d8;
+    --secondary-color: #b5e8b5;
+    --dark-bg: #2a2a2a;
+    --light-bg: #f5f5f5;
+    --text-dark: #000000;
+    --text-light: #666666;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --accent-pink: #f4a8a8;
+    --accent-purple: #d4a5e8;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-image: url('../Assets/BACKGROUND.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 28px 36px 12px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    padding: 0 0 8px;
+    border-bottom: none;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 44px;
+    font-weight: 800;
+    color: #000;
+    letter-spacing: -1.5px;
+    margin: 0;
+    line-height: 1.1;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.header-right {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    position: relative;
+    padding-right: 8px;
+}
+
+.search-btn,
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+}
+
+.search-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.search-btn svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2.5;
+}
+
+.menu-btn {
+    width: 56px;
+    height: 56px;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.search-btn:hover,
+.menu-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+/* View Selector Wrapper */
+.view-selector-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 16px auto 28px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* View Selector */
+.view-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+    position: relative;
+}
+
+/* Menu button on the bar */
+.menu-btn-bar {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.menu-btn-bar:hover {
+    opacity: 0.8;
+    transform: translateY(-51%);
+}
+
+.view-btn {
+    padding: 12px 28px;
+    background-color: rgba(128, 128, 128, 0.55);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    min-width: auto;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    outline: none;
+} 
+
+.view-btn.active {
+    background-color: rgba(128, 128, 128, 0.65);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.view-btn:hover {
+    opacity: 0.95;
+    background-color: rgba(128, 128, 128, 0.62);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 12px;
+    background: rgba(80, 80, 80, 0.92);
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 280px;
+    padding: 12px 0;
+    overflow: hidden;
+    border: none;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 14px 22px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    position: relative;
+}
+
+/* Bottom Toggle */
+.bottom-toggle {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 22px;
+    display: flex;
+    gap: 0;
+    z-index: 100;
+    background: rgba(128, 128, 128, 0.65);
+    border-radius: 16px;
+    overflow: hidden;
+    width: 420px;
+    height: 58px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 0 20px;
+    background-color: rgba(128, 128, 128, 0.55);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn.active {
+    background-color: rgba(75, 75, 75, 0.85);
+    color: #fff;
+}
+
+.toggle-btn:hover {
+    opacity: 0.96;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: var(--text-dark);
+    z-index: 50;
+}
+
+.footer a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #000;
+    font-size: 19px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    letter-spacing: -0.4px;
+}
+
+.footer a svg {
+    width: 24px;
+    height: 24px;
+}
+
+.footer a:hover {
+    opacity: 0.7;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+}
+
+.modal-content {
+    width: min(92vw, 560px);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    max-height: 90vh;
+}
+
+.editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.editor-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-btn:hover {
+    color: #000;
+}

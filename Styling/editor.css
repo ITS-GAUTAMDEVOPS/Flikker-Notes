@@ -1,0 +1,286 @@
+/* Editor Page Styles */
+
+.editor-page {
+    min-height: 100vh;
+    margin: 0;
+    background: #f1efee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.editor-shell {
+    width: min(92vw, 1280px);
+    background: #e7a7a3;
+    padding: 0 0 8px;
+    position: relative;
+    border-radius: 20px 20px 16px 16px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 4px rgba(255,255,255,0.12);
+}
+
+.editor-shell::before,
+.editor-shell::after {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.14);
+    pointer-events: none;
+}
+
+.editor-shell::before {
+    left: 34px;
+    top: 84px;
+    box-shadow: 120px 20px 0 rgba(255,255,255,0.12), 240px 10px 0 rgba(255,255,255,0.12);
+}
+
+.editor-shell::after {
+    right: 34px;
+    top: 84px;
+    box-shadow: -140px 20px 0 rgba(255,255,255,0.12), -260px 10px 0 rgba(255,255,255,0.12);
+}
+
+.editor-toolbar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(170px, 1fr));
+    background: #1f1f1f;
+    border-bottom: 2px solid #1a1a1a;
+    min-height: 72px;
+    align-items: center;
+    padding: 0 18px;
+    position: relative;
+    z-index: 1;
+    border-radius: 18px 18px 0 0;
+}
+
+.toolbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 72px;
+    border-right: 2px solid rgba(255,255,255,0.35);
+    padding: 0 12px;
+}
+
+.toolbar-row:last-child {
+    border-right: none;
+}
+
+.toolbar-row label {
+    color: #fff;
+    font-size: clamp(1.2rem, 1.7vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+}
+
+.font-select,
+.size-select,
+.align-select,
+.color-input {
+    border: 2px solid rgba(255,255,255,0.22);
+    background: rgba(0,0,0,0.18);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: clamp(0.8rem, 1vw, 1.3rem);
+    font-weight: 600;
+    outline: none;
+}
+
+.color-input {
+    width: 60px;
+    height: 38px;
+    padding: 3px;
+}
+
+.editor-sheet {
+    position: relative;
+    z-index: 1;
+    background: #f4f4f4;
+    margin: 0 auto 10px;
+    width: calc(100% - 52px);
+    max-width: 1160px;
+    aspect-ratio: 210 / 297;
+    min-height: 520px;
+    padding: 24px 30px 30px;
+    border: 2px solid rgba(255,255,255,0.18);
+    box-shadow: inset 0 0 0 5px rgba(240, 210, 208, 0.85);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.editor-title {
+    display: block;
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    text-align: center;
+    font-size: clamp(4.1rem, 6vw, 8rem);
+    line-height: 1;
+    letter-spacing: -0.08em;
+    font-weight: 800;
+    color: #000;
+    margin: 100px 0 18px;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: text;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    caret-color: #000;
+}
+
+.editor-title::placeholder {
+    color: rgba(0,0,0,0.35);
+}
+
+.editor-sheet-content {
+    min-height: 260px;
+    border-top: 2px dotted rgba(226, 105, 118, 0.9);
+    padding: 18px 25px 0 25px;
+    font-size: 30px;
+    line-height: 1.7;
+    outline: none;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background: transparent;
+    color: #000;
+    text-align: left;
+    margin-top: 10px;
+    cursor: text;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    caret-color: #000;
+}
+
+.editor-sheet-content:empty::before {
+    content: "Text...............";
+    color: rgba(0,0,0,0.7);
+    font-size: 2.2rem;
+    line-height: 1.3;
+    display: block;
+    padding-top: 4px;
+}
+
+.editor-actions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 26px 18px;
+    gap: 18px;
+}
+
+.editor-action-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.save-btn,
+.delete-btn {
+    border: none;
+    border-radius: 12px;
+    font-size: clamp(1.3rem, 2vw, 2.3rem);
+    font-weight: 700;
+    padding: 14px 26px;
+    cursor: pointer;
+    min-width: 180px;
+    text-align: center;
+}
+
+.save-btn {
+    background: rgba(48, 48, 48, 0.82);
+    color: #fff;
+}
+
+.delete-btn {
+    background: rgba(120, 20, 20, 0.8);
+    color: #fff;
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    background: rgba(70, 70, 70, 0.8);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.12);
+}
+
+.zoom-controls .size-btn {
+    width: 78px;
+    height: 64px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.zoom-controls .size-btn + .size-btn {
+    border-left: 1px solid rgba(255,255,255,0.15);
+}
+
+@media (max-width: 900px) {
+    .editor-toolbar {
+        grid-template-columns: repeat(2, minmax(170px, 1fr));
+    }
+
+    .toolbar-row {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .toolbar-row:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .editor-page {
+        padding: 14px;
+    }
+
+    .editor-shell {
+        width: 100%;
+    }
+
+    .editor-toolbar {
+        grid-template-columns: 1fr;
+        padding: 10px 8px;
+    }
+
+    .editor-sheet {
+        margin: 0 8px 10px;
+        padding: 18px 16px 20px;
+    }
+
+    .editor-owl {
+        left: 16px;
+        top: 20px;
+        transform: scale(0.8);
+    }
+
+    .editor-title {
+        margin-top: 82px;
+    }
+
+    .editor-actions {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
