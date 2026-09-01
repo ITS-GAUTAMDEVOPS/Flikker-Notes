@@ -198,7 +198,7 @@
                 todos = todos.filter(t => t.completed);
             }
 
-            // Sort todos based on sort mode
+            
             const sortMode = storage.getSortMode();
             if (sortMode === 'name') {
                 todos.sort((a, b) => (a.title || 'Untitled').localeCompare(b.title || 'Untitled'));
