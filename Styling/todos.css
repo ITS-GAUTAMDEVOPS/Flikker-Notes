@@ -1,7 +1,7 @@
 /* To-Dos Page Styles */
 
 .todos-page {
-    background-image: url('../Assets/BACKGROUND.webp');
+    background-image: url('../Assets/BACKGROUND.jpg');
     background-size: cover;
     background-attachment: fixed;
     min-height: 100vh;
